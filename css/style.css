@@ -1,0 +1,62 @@
+#login {
+	position: absolute;
+	margin: auto;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 2;
+}
+
+#login-box {
+	margin : auto;
+	position: absolute;
+	top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	width : 200px;
+	height: 200px;
+	z-index: 3;
+}
+
+#login-box input {
+	margin-top : 10px;
+}
+
+#tchat {
+	margin: auto;
+	position: absolute;
+	height: 1000px;
+	width: 1000px;
+	top: 10px;
+	right: 0;
+	bottom: 10px;
+	left: 0;
+	z-index: 1;
+}
+
+.panel-users {
+	width: 200px;
+	height: 1000px;
+	overflow: auto;
+	float: left;
+}
+
+.panel-center {
+	width: 800px;
+	height: 1000px;
+	overflow: auto;
+	float: right;
+}
+
+
+.input-group-tchat {
+	position: absolute;
+	bottom: 10px;
+	width: 770px;
+	height: 30px;
+}
+
+#tchat h3 {
+	text-align: center;
+}

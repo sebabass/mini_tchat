@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Projet stage</title>
+		<meta charset='utf-8' />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div id="tchat">
+			<!-- Code du tchat -->
+			
+			<div class="panel panel-users panel-default">
+  				<div class="panel-heading">
+    				<h3 class="panel-title">Utilisateurs</h3>
+  				</div>
+  				<div class="panel-body">
+    				<ul class="list-group users-list">
+				  	</ul>
+  				</div>
+			</div>
+
+			<div class="panel panel-center panel-default">
+  				<div class="panel-heading">
+    				<h3 class="panel-title">Mon mini-tchat</h3>
+  				</div>
+  				<div class="panel-body">
+    				<ul class="list-group">
+    					<script type="text/template" id="msg-tpl">
+							<li class='list-group-item'><%= pseudo %><%= message %></li>
+    					</script>
+    					<div id="msg-container-tpl"></div>
+				  	</ul>
+				  	<form action="" id="msg-form">
+					  	<div class="input-group input-group-tchat">
+							<span class="input-group-btn">
+							    <input class="btn btn-default" type="submit" value="envoyer"/>
+							</span>
+							<input type="text" class="form-control" id="msg" placeholder="Message">
+						</div>
+					</form>
+  				</div>
+			</div>
+		</div>
+		<div id="login">
+			<div id="login-box">
+				<form action="" id="login-form">
+					<input type="text" class="form-control" name="username" id="username" placeholder="Pseudo" />
+					<input type="email" class="form-control" name="email" id="email" placeholder="Entrer email">
+					<input class="btn btn-primary btn-lg btn-block" type="submit" id="submit" value="Rejoindre" />
+				</form>
+			</div>
+		</div>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="http://localhost:4242/socket.io/socket.io.js"></script>
+		<script src="js/client.js"></script>
+		<script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
+    	<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+	</body>
+</html>
