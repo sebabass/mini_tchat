@@ -5,7 +5,6 @@
 
 	form.submit(function(event){
 		event.preventDefault();
-		// Envoi l'evenement login a notre serveur.
 		if ($('#username').val() != '' && $('#email').val() != '') {
 			socket.emit('login', {
 				username : $('#username').val(),
@@ -36,13 +35,11 @@
 		$('#msg').focus();
 	});
 
-	// On ajoute l'utilisateur connecter a la liste utilisateur.
 	socket.on('nwusr', function(user){
 		console.log('new user : ' + user.username);
 		$('.users-list').append('<li class="list-group-item '+ user.username +' '+ user.sexe +'">'+ user.username +'</li>');
 	});
 
-	// On supprime un utilisateur de la liste utilisateur.
 	socket.on('delusr', function(user) {
 		$('.'+ user.username).remove();
 	});

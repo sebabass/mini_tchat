@@ -1,16 +1,14 @@
-var http = require('http'); // Module http
+var http = require('http');
 
-// On cree le seveur
 var server = http.createServer(function(req, res){
 	
 });
-server.listen(4242); // Ecoute le port 4242
+server.listen(4242);
 
-// Module socket.io
 var io = require('socket.io').listen(server);
 var users = {};
 var messages = [];
-var limit = 2; // Limite des message visible pour les nouveaux utilisateurs.
+var limit = 10;
 
 io.sockets.on('connection', function(socket){
 	console.log('Nouveau utilisateur');
@@ -24,7 +22,6 @@ io.sockets.on('connection', function(socket){
 		socket.emit('newmsg', messages[k]);
 	}
 
-	// Check si l'utilisateur existe déja sinon l'ajoute a la liste.
 	socket.on('login', function(user){
 		var exist = false;
 		for (var k in users) {
@@ -40,9 +37,6 @@ io.sockets.on('connection', function(socket){
 			socket.emit('logged');
 			io.sockets.emit('nwusr', me);
 		}
-		if (messages.length > limit) {
-			messages.shift();
-		}
 	});
 
 	socket.on('disconnect', function() {
@@ -56,6 +50,9 @@ io.sockets.on('connection', function(socket){
 		msg.username = me.username;
 		msg.sexe = me.sexe;
 		messages.push(msg);
+		if (messages.length > limit) {
+			messages.shift();
+		}
 		io.sockets.emit('newmsg', msg);
 	});
 });
