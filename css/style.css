@@ -14,7 +14,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-	width : 200px;
+	width : 210px;
 	height: 200px;
 	z-index: 3;
 }
@@ -37,26 +37,39 @@
 
 .panel-users {
 	width: 200px;
-	height: 1000px;
+	height: 900px;
 	overflow: auto;
 	float: left;
+	text-align: center;
 }
 
 .panel-center {
 	width: 800px;
-	height: 1000px;
+	height: 900px;
 	overflow: auto;
 	float: right;
 }
 
-
 .input-group-tchat {
 	position: absolute;
-	bottom: 10px;
-	width: 770px;
-	height: 30px;
+	bottom: 0;
+	top: 85%;
+	width: 800px;
+	margin: auto;
 }
 
 #tchat h3 {
 	text-align: center;
+}
+
+#msg-form {
+	padding-top: 50px;
+}
+
+.homme {
+	color: #99CCFF;
+}
+
+.femme {
+	color: #FF99FF;
 }

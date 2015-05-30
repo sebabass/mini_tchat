@@ -26,21 +26,21 @@
     				<h3 class="panel-title">Mon mini-tchat</h3>
   				</div>
   				<div class="panel-body">
-    				<ul class="list-group">
+    				<ul class="list-group list-msg">
     					<script type="text/template" id="msg-tpl">
-							<li class='list-group-item'><%= pseudo %><%= message %></li>
+							<li class='list-group-item'><%= pseudo %>:<br /><%= message %></li>
     					</script>
     					<div id="msg-container-tpl"></div>
 				  	</ul>
-				  	<form action="" id="msg-form">
-					  	<div class="input-group input-group-tchat">
-							<span class="input-group-btn">
-							    <input class="btn btn-default" type="submit" value="envoyer"/>
-							</span>
-							<input type="text" class="form-control" id="msg" placeholder="Message">
-						</div>
-					</form>
   				</div>
+  				<form action="" id="msg-form">
+					<div class="input-group input-group-tchat">
+						<span class="input-group-btn">
+							<input class="btn btn-default" type="submit" value="envoyer"/>
+						</span>
+						<input type="text" class="form-control" id="msg" placeholder="Message">
+					</div>
+				</form>
 			</div>
 		</div>
 		<div id="login">
@@ -48,6 +48,9 @@
 				<form action="" id="login-form">
 					<input type="text" class="form-control" name="username" id="username" placeholder="Pseudo" />
 					<input type="email" class="form-control" name="email" id="email" placeholder="Entrer email">
+					<input type="radio" name="sexe" value="homme" id="homme" /> <label for="homme">Homme</label>
+       				<input type="radio" name="sexe" value="femme" id="femme" /> <label for="femme">Femme</label>
+       				<input type="radio" name="sexe" value="secret" id="secret" /> <label for="secret">Secret</label>
 					<input class="btn btn-primary btn-lg btn-block" type="submit" id="submit" value="Rejoindre" />
 				</form>
 			</div>
@@ -56,7 +59,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="http://localhost:4242/socket.io/socket.io.js"></script>
 		<script src="js/client.js"></script>
-		<script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
-    	<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+		<script src="js/underscore.js"></script>
+    	<script src="js/backbone.js"></script>
 	</body>
 </html>
