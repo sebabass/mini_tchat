@@ -26,10 +26,22 @@
 	msgform.submit(function(event){
 		event.preventDefault();
 		if ($('#msg').val() != '') {
-			console.log('message envoyer');
-			socket.emit('newmsg', {
-				msg : $('#msg').val()
-			});
+			switch ($('#msg').val()) {
+				case '/scramble':
+					socket.emit('newgame', msg);
+					break;
+				case '/scramble_help':
+					console.log('scramble help');
+					break;
+				case '/scramble_score':
+					console.log('scramble scores');
+					break;
+				default:
+					console.log('message envoyer');
+					socket.emit('newmsg', {
+						msg : $('#msg').val()
+					});
+			}
 		}
 		$('#msg').val('');
 		$('#msg').focus();
@@ -48,7 +60,7 @@
 		console.log('Pseudo : ' + msg.username + ' message : ' + msg.msg);
 		$('.panel-center').animate({ scrollTop : $('.panel-center').prop('scrollHeight') }, 50);
 
-		MsgView = Backbone.View.extend ({
+		var MsgView = Backbone.View.extend ({
 			el: '#msg-container-tpl',
 
 			initialize: function(){

@@ -26,8 +26,8 @@
 #tchat {
 	margin: auto;
 	position: absolute;
-	height: 1000px;
-	width: 1000px;
+	height: 600px;
+	width: 700px;
 	top: 10px;
 	right: 0;
 	bottom: 10px;
@@ -36,16 +36,16 @@
 }
 
 .panel-users {
-	width: 200px;
-	height: 900px;
+	width: 20%;
+	height: 100%;
 	overflow: auto;
 	float: left;
 	text-align: center;
 }
 
 .panel-center {
-	width: 800px;
-	height: 900px;
+	width: 80%;
+	height: 100%;
 	overflow: auto;
 	float: right;
 }
@@ -53,8 +53,8 @@
 .input-group-tchat {
 	position: absolute;
 	bottom: 0;
-	top: 85%;
-	width: 800px;
+	top: 110%;
+	width: 80%;
 	margin: auto;
 }
 
@@ -72,4 +72,10 @@
 
 .femme {
 	color: #FF99FF;
+}
+
+
+#cmd-list {
+	width: 600px;
+	height: 200px;
 }
