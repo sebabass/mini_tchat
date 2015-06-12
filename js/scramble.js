@@ -6,7 +6,7 @@ var isscramble = false;
 var wrdModel = false;
 var wordTab = false; 
 var timer = false;
-var times = 60000; // 60 secondes temps pour trouver le mot.
+var times = 20000; // 60 secondes temps pour trouver le mot.
 var username = '<span style="color:red">[Scramble]</span>';
 
 /* Backbone */
