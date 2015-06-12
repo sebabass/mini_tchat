@@ -28,13 +28,17 @@
 		if ($('#msg').val() != '') {
 			switch ($('#msg').val()) {
 				case '/scramble':
-					socket.emit('newgame', msg);
+					socket.emit('newgame', {
+						msg : ''
+					});
 					break;
 				case '/scramble_help':
 					console.log('scramble help');
 					break;
 				case '/scramble_score':
-					console.log('scramble scores');
+					socket.emit('lookscore', {
+						msg : ''
+					});
 					break;
 				default:
 					console.log('message envoyer');
