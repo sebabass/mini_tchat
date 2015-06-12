@@ -32,9 +32,6 @@
 						msg : ''
 					});
 					break;
-				case '/scramble_help':
-					console.log('scramble help');
-					break;
 				case '/scramble_score':
 					socket.emit('lookscore', {
 						msg : ''

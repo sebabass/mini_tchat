@@ -35,6 +35,19 @@
 	z-index: 1;
 }
 
+.panel-heading {
+	position: absolute;
+	z-index: 1;
+}
+
+.panel-users > .panel-heading {
+	width: 20%;
+}
+
+li:nth-child(1) {
+	margin-top: 50px;
+}
+
 .panel-users {
 	width: 20%;
 	height: 100%;
@@ -48,6 +61,10 @@
 	height: 100%;
 	overflow: auto;
 	float: right;
+}
+
+.panel-center > .panel-heading {
+	width: 80%;
 }
 
 .input-group-tchat {

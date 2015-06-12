@@ -1,7 +1,6 @@
 /* Modules */
 var http = require('http');
 var scramble = require('./scramble');
-var fs = require('fs');
 
 /* SERVER */
 var server = http.createServer(function(req, res){
@@ -55,31 +54,33 @@ io.sockets.on('connection', function(socket){
 	socket.on('newmsg', function(msg) {
 		msg.username = me.username;
 		msg.sexe = me.sexe;
+		msg.msg.trim();
 		messages.push(msg);
 		if (messages.length > limit) {
 			messages.shift();
 		}
 		io.sockets.emit('newmsg', msg);
-		if (scramble.wrdModel && msg.msg === scramble.wrdModel.get('word')) {
+		if (scramble.wrdModel && msg.msg.length === scramble.wrdModel.get('len') && msg.msg.toLowerCase() === scramble.wrdModel.get('word')) {
 			var content;
-			msg.username = '<span style="color:red">[Scramble]</span>';
-			msg.msg = '<span style="color:red;">@<span> <span style="color:blue">Le mot a été trouver : ['+ scramble.wrdModel.get('word') +'] par <span class="'+ me.sexe +'">'+ me.username +'</span>. </span><span style="color:red;">@<span>';
+			clearTimeout(scramble.timer);
+			msg.username = scramble.username;
+			msg.msg = scramble.dialog('Le mot a été trouver : ['+ scramble.wrdModel.get('word') +'] par <span class="'+ me.sexe +'">'+ me.username +'</span>.');
 			scramble.isscramble = false;
 			io.sockets.emit('newmsg', msg);
 			content = scramble.updateScore(me.username, scramble.wrdModel.get('pts'));
 			for (var i = 0; i < scramble.scores.length; i++) {
 				content = content.replace(/\n/, '<br />');
 			}
-			msg.msg = content;
+			msg.msg = scramble.dialog('<br />'+ content);
 			io.sockets.emit('newmsg', msg);
 			scramble.wrdModel = false;
 		}
 	});
 
 	socket.on('newgame', function(msg) {
-		msg.username = '<span style="color:red">[Scramble]</span>';
+		msg.username = scramble.username;
 		if (scramble.isscramble) {
-			msg.msg = '<span style="color:red;">@<span> <span style="color:blue">Une partie est déja en cours mot a trouver : ['+ scramble.wrdModel.get('check') +']. </span><span style="color:red;">@<span>';
+			msg.msg = scramble.dialog('Une partie est déja en cours mot a trouver : ['+ scramble.wrdModel.get('check') +'].');
 			socket.emit('newmsg', msg);
 		}
 		else {
@@ -89,14 +90,20 @@ io.sockets.on('connection', function(socket){
 			var shuf = scramble.shuffle(split, scramble.wrdModel.get('len'));
 			scramble.wrdModel.set('check', shuf);
 			scramble.isscramble = true;
-			msg.msg = '<span style="color:red;">@<span> <span style="color:blue">Nouvelle Partie de scramble par <span class="'+ me.sexe +'">'+ me.username +'</span> mot a trouver : ['+ scramble.wrdModel.get('check') +'] bonne chance! </span><span style="color:red;">@<span>';
+			msg.msg = scramble.dialog('Nouvelle Partie de scramble par <span class="'+ me.sexe +'">'+ me.username +'</span> mot a trouver : ['+ scramble.wrdModel.get('check') +'] bonne chance!');
 			io.sockets.emit('newmsg', msg);
+			scramble.timer = setTimeout(function() {
+				msg.msg = scramble.dialog('Partie terminée, dommage, la bonne réponse était : ['+ scramble.wrdModel.get('word') +'].');
+				io.sockets.emit('newmsg', msg);
+				scramble.isscramble = false;
+				scramble.wrdModel = false;
+			}, scramble.times);
 		}
 	});
 
 	socket.on('lookscore', function(msg) {
 		var content;
-		msg.username = '<span style="color:red">[Scramble]</span>';
+		msg.username = scramble.username;
 		content = scramble.putScore();
 		for (var i = 0; i < scramble.scores.length; i++) {
 			content = content.replace(/\n/, '<br />');

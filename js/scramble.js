@@ -4,7 +4,10 @@ var	Backbone = require('backbone');
 var scores = [];
 var isscramble = false;
 var wrdModel = false;
-var wordTab = false;
+var wordTab = false; 
+var timer = false;
+var times = 60000; // 60 secondes temps pour trouver le mot.
+var username = '<span style="color:red">[Scramble]</span>';
 
 /* Backbone */
 var Word = Backbone.Model.extend({
@@ -155,7 +158,14 @@ var sortScore = function sortScore() {
 	}
 }
 
+var dialog = function dialog(str) {
+	return ('<span style="color:red;">@<span> <span style="color:blue">'+ str +'</span></span><span style="color:red;">@<span>');
+}
+
+exports.times = times;
+exports.username = username;
 exports.shuffle = shuffle;
 exports.updateScore = updateScore;
 exports.putScore = putScore;
 exports.putScore = putScore;
+exports.dialog = dialog;
