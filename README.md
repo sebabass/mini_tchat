@@ -20,3 +20,6 @@ Autres
 - On peut continuer a discuté pendant une partie.
 - Les mots sont stockés dans un fichier 'mot.txt'.Un mot par ligne.
 - Pareil pour les meilleurs scores 'score.txt'.Ils sont trier a chaque partie.
+
+# Vidéo démonstration
+- https://www.youtube.com/watch?v=UDqq3wn7H5s
