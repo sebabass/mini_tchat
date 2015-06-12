@@ -22,4 +22,4 @@ Autres
 - Pareil pour les meilleurs scores 'score.txt'.Ils sont trier a chaque partie.
 
 # Vidéo démonstration
-- <a href="https://www.youtube.com/watch?v=UDqq3wn7H5s"></a>
+- https://www.youtube.com/watch?v=UDqq3wn7H5s
