@@ -7,7 +7,7 @@ $ npm install socket.io
 
 Les commandes
 - /scramble 		: Lance une partie de scramble sauf si une partie est en cours.
-- /scramble_score 	: Affiche le top 5 des meilleurs scores par ordre décroissant.
+- /scramble_score 	: Affiche les meilleurs scores par ordre décroissant.
 
 Les règles
 - Un mot est tiré au hasard dans une liste.
